@@ -1,20 +1,21 @@
 const express = require("express");
 require("dotenv").config();
 
-const autenticarAPIKey = require ("./autorizar")
-
 const cors = require('cors');
 
 const municipiosRouter = require("./routes/municipios");
+const autenticarApi = require("./autorizar");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(autenticarAPIKey)
+
+
 
 // =====================
 // Rotas principais
 // =====================
+app.use(autenticarApi);
 app.use("/municipios", municipiosRouter);
 
 // Rota raiz
@@ -28,6 +29,4 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 
-app.listen(PORT, "127.0.0.1", () => {
-  console.log("✅ Servidor rodando em http://127.0.0.1:3000");
-});
+app.listen(PORT,() => {});
