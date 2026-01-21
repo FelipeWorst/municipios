@@ -15,7 +15,7 @@ app.use(express.json());
 // =====================
 // Rotas principais
 // =====================
-app.use(autenticarApi);
+//app.use(autenticarApi);
 app.use("/municipios", municipiosRouter);
 
 // Rota raiz
